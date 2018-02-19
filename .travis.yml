@@ -26,4 +26,4 @@ script:
   - mkdir build && cd build
   - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=YES .. && make
   - ( for file in $(find ../ -name "*.cpp"); do echo $file; clang-check -analyze $file -p ./ || exit; done );
-- ./executable
+  - ./executable
