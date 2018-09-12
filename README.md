@@ -11,19 +11,3 @@
 3. Случайный проход - доступ происходит в случайном порядке.
 
 Следует компилировать программу с использованием оптимизации (например, c ключами -O1 или -O2), чтобы исключить лишние обращения к памяти. Для замера времени с большей точностью и меньшими накладными расходами используйте функцию `rdtsc`.
-
-### Задание 2. Исследование системных ресурсов.
-In computing, a system resource, or simply resource, is any physical or virtual component of limited availability within a computer system. Every device connected to a computer system is a resource. Every internal system component is a resource. Virtual system resources include files (concretely file handles), network connections (concretely network sockets), and memory areas. Managing resources is referred to as resource management, and includes both preventing resource leaks (releasing a resource when a process has finished using it) and dealing with resource contention (when multiple processes wish to access a limited resource). 
-
-* CPU, both time on a single CPU and use of multiple CPUs – see multitasking
-* Random access memory and virtual memory – see memory management
-* Hard disk drives, include space generally, contiguous free space (such as for swap space), and use of multiple physical devices ("spindles"), since using multiple devices allows parallelism
-* Cache space, including CPU cache and MMU cache (translation lookaside buffer)
-* Network throughput
-* Electrical power
-* Input/output operations
-* Randomness
-
-
-
-
