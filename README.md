@@ -1,5 +1,7 @@
 # Лабораторная работа #2
 
+> Кэш - промежуточный буфер с быстрым доступом, содержащий информацию, которая может быть запрошена с наибольшей вероятностью. Доступ к данным в кэше осуществляется быстрее, чем выборка исходных данных из более медленной памяти или удаленного источника, однако её объём существенно ограничен по сравнению с хранилищем исходных данных.
+
 ### Задача
 
 Для каждого из вариантов проходов (*прямой*, *обратный* и *случайный*) целочисленного массива 
@@ -41,25 +43,25 @@ cache_size['3'] = 8 mb;
 
 Ниже представлен формат и пример отчета:
 
-```json
-investigation:                         |  investigaion:
-  travel_variant: <вариант_прохода>    |    travel_order: "direction"
-  experiments:                         |    experiments:
-  - experiment:                        |    - experiment:
-      number:                          |        number: 1
-      input_data:                      |        input_data:
-        buffer_size: <размер_буфера>   |          buffer_size: "1mb"
-      results:                         |        results:
-        duration: <продолжительность>  |          duration: "1ns"
-  - experiment:                        |    - experiment:
-      number: <номер_эксперимента>     |        number: 2
-      input_data:                      |        input_data:
-        buffer_size: <размер_буфера>   |          buffer_size: "2mb"
-      results:                         |        results:
-        duration: <продолжительность>  |          duration: "2ns"
-                                       |
-investigation:                         |  investigation:
-...                                    |  ...
+```yaml
+investigation:                                       |  investigaion:
+  travel_variant: <вариант_прохода>                  |    travel_order: "direction"
+  experiments:                                       |    experiments:
+  - experiment:                                      |    - experiment:
+      number:                                        |        number: 1
+      input_data:                                    |        input_data:
+        buffer_size: <размер_буфера>                 |          buffer_size: "1mb"
+      results:                                       |        results:
+        duration: <продолжительность>                |          duration: "1ns"
+  - experiment:                                      |    - experiment:
+      number: <номер_эксперимента>                   |        number: 2
+      input_data:                                    |        input_data:
+        buffer_size: <размер_буфера>                 |          buffer_size: "2mb"
+      results:                                       |        results:
+        duration: <продолжительность>                |          duration: "2ns"
+                                                     |
+investigation:                                       |  investigation:
+...                                                  |  ...
 ```
 
 В отчет также необходимо добавить общий график с результатами всех исследований.
