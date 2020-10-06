@@ -1,4 +1,4 @@
-// Copyright 2018 Your Name <your_email>
+// Copyright 2018 Petr Portnov <gh@progrm-jarvis.ru>
 
 #include <gtest/gtest.h>
 
