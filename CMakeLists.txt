@@ -25,7 +25,7 @@ hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
 add_library(cache-benchmark-base STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/cache_benchmark_base.cpp)
-add_executable(tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp)
+add_executable(tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/cached_benchmark_chained_array_test.cpp)
 add_executable(cache-benchmark ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp)
 
 target_include_directories(cache-benchmark-base PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)

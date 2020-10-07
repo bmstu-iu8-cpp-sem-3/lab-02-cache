@@ -5,7 +5,7 @@
 #include <cache_benchmark_base.hpp>
 #include <unordered_set>
 
-namespace {
+namespace cache_benchmark {
 
     template<size_t const Length>
     static void assert_array_is_chained_(void const* const* chained_array) {
@@ -39,7 +39,7 @@ namespace {
     TEST(RandomBanchmarkBase, DirectOrder) {
         constexpr size_t size = 10;
         void const* * chained_array = new void const*[size];
-        cache_benchmark::fill_direct_order_<size>(chained_array);
+        fill_direct_order_<size>(chained_array);
 
         assert_array_is_chained_<size>(chained_array);
 
@@ -49,7 +49,7 @@ namespace {
     TEST(RandomBanchmarkBase, ReverseOrder) {
         constexpr size_t size = 10;
         void const* * chained_array = new void const*[size];
-        cache_benchmark::fill_reverse_order_<size>(chained_array);
+        fill_reverse_order_<size>(chained_array);
 
         assert_array_is_chained_<size>(chained_array);
 
@@ -59,7 +59,7 @@ namespace {
     TEST(RandomBanchmarkBase, RandomOrder) {
         constexpr size_t size = 10;
         void const* * chained_array = new void const*[size];
-        cache_benchmark::fill_random_order_<size>(chained_array);
+        fill_random_order_<size>(chained_array);
 
         assert_array_is_chained_<size>(chained_array);
 
