@@ -1,3 +1,5 @@
+// Copyright 2020 Petr Portnov <gh@progrm-jarvis.ru>
+
 #include <cache_benchmark_base.hpp>
 #include <iostream>
 #include <map>
@@ -7,17 +9,17 @@ void append_investigation_header(std::ostream& output, std::string const& travel
 void append_investigation_experiment(std::ostream& output, size_t buffer_size,
                                      cache_benchmark::Results::Duration const& duration, size_t number);
 
-constexpr unsigned long long operator"" _m(unsigned long const long value) { return value << 20u; }
+constexpr size_t to_megabytes(size_t const value) { return value << 20u; }
 
 int main() {
     constexpr size_t WARMUP_COUNT = 100u, ITERATIONS_COUNT = 1000u;
 
     std::map<size_t, cache_benchmark::Results> results{
-        std::make_pair(1, cache_benchmark::run_benchmark<1_m, WARMUP_COUNT, ITERATIONS_COUNT>()),
-        std::make_pair(2, cache_benchmark::run_benchmark<2_m, WARMUP_COUNT, ITERATIONS_COUNT>()),
-        std::make_pair(4, cache_benchmark::run_benchmark<4_m, WARMUP_COUNT, ITERATIONS_COUNT>()),
-        std::make_pair(8, cache_benchmark::run_benchmark<8_m, WARMUP_COUNT, ITERATIONS_COUNT>()),
-        std::make_pair(12, cache_benchmark::run_benchmark<12_m, WARMUP_COUNT, ITERATIONS_COUNT>()),
+        std::make_pair(1, cache_benchmark::run_benchmark<to_megabytes(1), WARMUP_COUNT, ITERATIONS_COUNT>()),
+        std::make_pair(2, cache_benchmark::run_benchmark<to_megabytes(2), WARMUP_COUNT, ITERATIONS_COUNT>()),
+        std::make_pair(4, cache_benchmark::run_benchmark<to_megabytes(4), WARMUP_COUNT, ITERATIONS_COUNT>()),
+        std::make_pair(8, cache_benchmark::run_benchmark<to_megabytes(8), WARMUP_COUNT, ITERATIONS_COUNT>()),
+        std::make_pair(12, cache_benchmark::run_benchmark<to_megabytes(12), WARMUP_COUNT, ITERATIONS_COUNT>()),
     };
 
     //@formatter:off

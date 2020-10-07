@@ -7,7 +7,7 @@
 
 namespace cache_benchmark {
 
-    template<size_t const Length>
+    template <size_t const Length>
     static void assert_array_is_chained_(void const* const* chained_array) {
         static_assert(Length > 0);
 
@@ -38,7 +38,7 @@ namespace cache_benchmark {
 
     TEST(RandomBanchmarkBase, DirectOrder) {
         constexpr size_t size = 10;
-        void const* * chained_array = new void const*[size];
+        void const** chained_array = new void const*[size];
         fill_direct_order_<size>(chained_array);
 
         assert_array_is_chained_<size>(chained_array);
@@ -48,7 +48,7 @@ namespace cache_benchmark {
 
     TEST(RandomBanchmarkBase, ReverseOrder) {
         constexpr size_t size = 10;
-        void const* * chained_array = new void const*[size];
+        void const** chained_array = new void const*[size];
         fill_reverse_order_<size>(chained_array);
 
         assert_array_is_chained_<size>(chained_array);
@@ -58,12 +58,11 @@ namespace cache_benchmark {
 
     TEST(RandomBanchmarkBase, RandomOrder) {
         constexpr size_t size = 10;
-        void const* * chained_array = new void const*[size];
+        void const** chained_array = new void const*[size];
         fill_random_order_<size>(chained_array);
 
         assert_array_is_chained_<size>(chained_array);
 
         delete[] chained_array;
     }
-}
-
+} // namespace cache_benchmark

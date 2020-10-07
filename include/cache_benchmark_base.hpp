@@ -6,13 +6,11 @@
 #include <algorithm>
 #include <cache_benchmark_alloc.hpp>
 #include <cache_benchmark_chained_array.hpp>
-#include <algorithm>
+#include <cassert>
 #include <chrono>
 #include <cstddef>
 #include <random>
 #include <unordered_set>
-
-#include <cassert>
 
 namespace cache_benchmark {
 
@@ -25,32 +23,29 @@ namespace cache_benchmark {
     template <size_t const LENGTH, size_t const WARMUP_COUNT, size_t const ITERATIONS_COUNT>
     Results run_benchmark();
 
-    namespace {
-
 #ifdef __always_inline
-        __always_inline
+    __always_inline
 #else
-        inline
+    inline
 #endif
-        void iterate_chained_array_(void const* const* array_start) {
-            // up to nullptr
-            while ((array_start = static_cast<void const* const*>(*array_start)));
-        }
+    void iterate_chained_array_(void const* const* array_start) {
+        // up to nullptr
+        while ((array_start = static_cast<void const* const*>(*array_start))) continue;
+    }
 
-        template <const size_t WARMUP_COUNT, const size_t ITERATIONS_COUNT>
-        Results::Duration benchmarked_iterate_chained_array_(const void* const* const chained_array) {
-            typedef std::chrono::steady_clock Clock;
+    template <const size_t WARMUP_COUNT, const size_t ITERATIONS_COUNT>
+    Results::Duration benchmarked_iterate_chained_array_(const void* const* const chained_array) {
+        typedef std::chrono::steady_clock Clock;
 
-            // Warmup
-            for (size_t i = 0; i < WARMUP_COUNT; ++i) iterate_chained_array_(chained_array);
+        // Warmup
+        for (size_t i = 0; i < WARMUP_COUNT; ++i) iterate_chained_array_(chained_array);
 
-            // Benchmark
-            auto const start = Clock::now(); // instantly start measuring
-            for (size_t i = 0; i < ITERATIONS_COUNT; ++i) iterate_chained_array_(chained_array);
-            auto const end = Clock::now(); // instantly stop measuring
+        // Benchmark
+        auto const start = Clock::now(); // instantly start measuring
+        for (size_t i = 0; i < ITERATIONS_COUNT; ++i) iterate_chained_array_(chained_array);
+        auto const end = Clock::now(); // instantly stop measuring
 
-            return std::chrono::duration_cast<Results::Duration>(end - start);
-        }
+        return std::chrono::duration_cast<Results::Duration>(end - start);
     }
 
     template <const size_t LENGTH, const size_t WARMUP_COUNT, const size_t ITERATIONS_COUNT>
@@ -82,7 +77,7 @@ namespace cache_benchmark {
         }
 
         return {direct_order_duration, reverse_order_direction, random_order_direction};
-    }
+    } // namespace cache_benchmark
 } // namespace cache_benchmark
 
 #endif // INCLUDE_CACHE_BENCHMARK_BASE_HPP_
