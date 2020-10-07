@@ -13,6 +13,7 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <cmath>
 
 #include "yaml-cpp/yaml.h"
 
@@ -35,6 +36,6 @@ void WriteOneExperiment(const size_t &counter, const float &BufferSize,
                         vector<YAML::Node> &experiments);
 
 void WriteToFileAllExperiments(const string &TravelVariant, std::ofstream &out,
-                               vector<YAML::Node> &experiments);
+                               const vector<YAML::Node> &experiments);
 
 #endif  // TEMPLATE_FUNCTIONS_H

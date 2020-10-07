@@ -3,9 +3,13 @@
 #include "../include/functions.h"
 
 void MakeRandArray(int64_t *&arr, const size_t &size) {
-  std::srand(std::time(nullptr));
+  std::random_device rd;
+  std::mt19937 mt(rd());
+  //[-2^63; 2^63-1]
+  std::uniform_int_distribution<int64_t> dist(
+      -(pow(2, 63)), static_cast<int64_t>(pow(2, 63) - 1));
   for (size_t i = 0; i < size; ++i) {
-    arr[i] = std::rand();
+    arr[i] = dist(mt);
   }
 }
 

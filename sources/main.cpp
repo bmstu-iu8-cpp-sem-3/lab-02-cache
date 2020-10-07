@@ -3,10 +3,11 @@
 #include "../include/functions.h"
 
 int main() {
-  cout << "Cache L1 : 0.125mb\n"
-          "Cache L2 : 0.5mb\n"
+  cout << "Cache L1 : 0.0625mb\n"
+          "Cache L2 : 0.25mb\n"
           "Cache L3 : 3mb\n";
-  vector<float> BufferSizes{0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 4.5};  // mb
+  vector<float> BufferSizes{0.03125, 0.0625, 0.125, 0.25, 0.5,
+                            1,       2,      4,     4.5};  // mb
   vector<string> TravelVariants{"direction", "reverse", "random"};
 
   std::ofstream out{"result.yaml"};

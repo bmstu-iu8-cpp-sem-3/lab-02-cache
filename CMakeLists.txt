@@ -18,7 +18,6 @@ HunterGate(
         SHA1 "9a3594a61227967fb92159339ba326701b287b19"
 )
 
-
 project(lab02)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
@@ -34,8 +33,11 @@ add_library(lab02 STATIC
 add_executable(tests
         # TODO: enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
-        include/functions.h sources/experiment.cpp sources/main.cpp
+        include/functions.h sources/experiment.cpp
         sources/printer.cpp sources/report.cpp)
+add_executable(main
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
+        )
 
 target_include_directories(lab02
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -44,6 +46,7 @@ target_include_directories(tests
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
 target_link_libraries(tests GTest::main lab02)
+target_link_libraries(main lab02)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests)
@@ -53,6 +56,7 @@ if (BUILD_COVERAGE)
     list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
     find_package(codecov)
     add_coverage(lab02)
+    add_coverage(main)
     add_coverage(tests)
     list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
     coverage_evaluate()

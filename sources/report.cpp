@@ -19,7 +19,7 @@ void WriteOneExperiment(const size_t &counter, const float &BufferSize,
 }
 
 void WriteToFileAllExperiments(const string &TravelVariant, std::ofstream &out,
-                               vector<YAML::Node> &experiments) {
+                               const vector<YAML::Node> &experiments) {
   YAML::Node node;
   node["investigation"]["travel_variant"] = TravelVariant;
   node["investigation"]["experiments"] = experiments;
