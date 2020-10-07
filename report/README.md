@@ -107,4 +107,4 @@ investigations:
 
 ## Chart
 
-[![Chart](https://i.ibb.co/GMmXS0y/chart-preview.png)](https://live.amcharts.com/jZGU4/)
+[![Chart](https://i.ibb.co/CBgsTMm/processor-data-access-chart.png)](https://live.amcharts.com/jZGU4/)
