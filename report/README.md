@@ -105,6 +105,6 @@ investigations:
             duration: "61152243716ns"
 ```
 
-## Char
+## Chart
 
-<iframe width="600" height="400" src="https://live.amcharts.com/jZGU4/embed/" frameborder="0"></iframe>
+[![Chart](https://i.ibb.co/GMmXS0y/chart-preview.png)](https://live.amcharts.com/jZGU4/)
